@@ -34,7 +34,7 @@ Full kravspec (auktoritativ vid tveksamhet):
   2. Hur har spelet förändrats över tid?
   3. Finns det en trade-off mellan drive-längd och precision?
 - Inkrementell git-historik (många små commits).
-- Inlämning: publikt GitHub-repo + mejl till kursledaren senast onsdag 20 maj 2026, 09:00.
+- Inlämning: publikt GitHub-repo
 
 ## Notebook-struktur
 
