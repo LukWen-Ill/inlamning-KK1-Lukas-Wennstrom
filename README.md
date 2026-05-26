@@ -1,13 +1,14 @@
-# KK1 – Analys av hundraser
+# KK1 – PGA Tour-spelarstatistik
 
 Inlämning för **KK1** i kursen *Artificiell Intelligens – programmering Python* (MAI25MA).
 
 ## Dataset
 
-`data/dog_breeds.csv` – 117 hundraser, en rad per ras, 8 kolumner: ras, ursprungsland,
-pälsfärg, höjd, ögonfärg, livslängd, karaktärsdrag och vanliga hälsoproblem.
+`data/pga_tour.csv` – PGA Tour-spelarsäsonger 2015–2022. En rad per spelare och säsong,
+med numeriska statistik som drive-längd, drive-precision, greens in regulation, putting
+och scoring average, samt prestationsindikatorer (vinster, topp-10, prispengar).
 
-Källa: Kaggle – https://www.kaggle.com/datasets/marshuu/dog-breeds
+Källa: Kaggle – https://www.kaggle.com/datasets/robikscube/pga-tour-golf-data-20152022
 
 ## Kör notebooken
 
