@@ -5,46 +5,55 @@ Python* (MAI25MA).
 
 ## Uppdrag
 
-Bygg en Jupyter-notebook som analyserar `data/dog_breeds.csv` (~116 hundraser) och
-uppfyller KK1-kraven för **Godkänt (G)**. Inte VG.
+Bygg en Jupyter-notebook som analyserar `data/pga_tour.csv` (PGA Tour-spelarsäsonger
+2015–2022) och uppfyller KK1-kraven på **mellanting G/VG** — solid G-grund med VG-finish
+där det passar naturligt (påståendetitlar, diagramvalsförsök, annoteringar).
 
 Full kravspec (auktoritativ vid tveksamhet):
 `C:\Users\lukas\projects\school_repos\ai-python-mai25ma\kunskapskontroll\KK1\README.md`
 
 ## Dataset
 
-- **Källa:** `data/dog_breeds.csv` (ursprung: Kaggle — exakt URL fylls i före inlämning)
-- **Storlek:** ~116 rader, 8 kolumner
-- **En rad =** en hundras
-- **Kolumner:** Breed, Country of Origin, Fur Color, Height (in), Color of Eyes,
-  Longevity (yrs), Character Traits, Common Health Problems
-- **Viktigt:** `Height (in)` och `Longevity (yrs)` är lagrade som strängranges
-  (`"21-24"`, `"10-12"`) — måste parsas till numeriska kolumner innan plottning.
+- **Källa:** Kaggle – https://www.kaggle.com/datasets/robikscube/pga-tour-golf-data-20152022
+- **Fil:** `data/pga_tour.csv`
+- **Storlek:** ~400–560 rader (8 säsonger × ~50–70 spelare/säsong)
+- **En rad =** en spelare en säsong
+- **Förväntade kolumner:** drive distance (yards), drive accuracy (%), greens in
+  regulation (%), putting average, scoring average, wins, top 10, money/earnings
+  (faktiska kolumnnamn bekräftas vid inläsning)
+- **Förväntade kvirkar:** money troligen som textsträng (`"$1,234,567"`),
+  procent kan vara strängar, NaN för spelare som inte kvalificerat för en stat
 
 ## Mål
 
-- Godkänt KK1, inget mer.
+- KK1 mellanting G/VG.
 - Notebook kör utan fel.
-- 3 visualiseringar med matplotlib.
-- Inkrementell git-historik (commits löpande genom arbetet, inte en enda final commit).
+- 4–5 visualiseringar med matplotlib (seaborn där det förenklar).
+- Tre frågor som tråd genom analysen:
+  1. Vad kännetecknar de bästa spelarna?
+  2. Hur har spelet förändrats över tid?
+  3. Finns det en trade-off mellan drive-längd och precision?
+- Inkrementell git-historik (många små commits).
 - Inlämning: publikt GitHub-repo + mejl till kursledaren senast onsdag 20 maj 2026, 09:00.
 
 ## Notebook-struktur
 
-1. **Inledning** — kontext om datasetet
-2. **Inläsning och inspektion** — `.shape`, `.info()`, `.describe()`
-3. **Datatvätt** — parsa range-strängar, hantera NaN, motivera val
-4. **Visualiseringar** (3 st med matplotlib Figure/Axes):
-   - Stapel: top 10 ursprungsländer efter antal raser
-   - Histogram: fördelning av median-livslängd
-   - Scatter: höjd vs livslängd
-5. **Avslutning** — reflektion över mönster och datans gränser
+1. **Inledning** — kontext, källa, en-rad-definition, population, de tre frågorna
+2. **Inläsning och inspektion** — `.shape`, `.info()`, `.describe()`, `.head()`
+3. **Datatvätt** — money-parsing, procent-parsing, NaN-hantering, motivera val
+4. **Visualiseringar** (4–5 st med matplotlib Figure/Axes), varje med formulerad fråga:
+   - Topp vs resten: boxplot/histogram-jämförelse av nyckelstats
+   - Drive-längd över tid: linjediagram med annoterad trend
+   - Distance vs accuracy: scatter med färglagd grupp + kvadrantlinjer
+   - Diagramvalsförsök för EN fråga (VG-punkt: synligt prövat)
+   - (Optional) Korrelationsranking mot scoring
+5. **Avslutning** — reflektion över alla tre frågor + epistemisk gräns
 
 ## Repo-struktur
 
 ```
 notebook.ipynb
-data/dog_breeds.csv
+data/pga_tour.csv
 README.md
 CLAUDE.md
 ```
@@ -55,18 +64,28 @@ CLAUDE.md
 - Kommentarer i kod på svenska där de behövs.
 - matplotlib primärt. Seaborn endast om det förenklar.
 - Figure/Axes-modellen (`fig, ax = plt.subplots()`), inte `plt.plot()` direkt.
+- Påståendetitlar där det passar (inte forcerat överallt).
+- Enheter på axlar (yards, %, USD, scoring).
+
+## VG-punkter som tillämpas (mellanting)
+
+- Påståendetitlar där det passar
+- Annoteringar på minst två visualiseringar
+- Ett synligt diagramvalsförsök med markdown-reflektion
+- Reell reflektion i avslutningen (inte bara "här är grafer")
 
 ## Vad detta INTE är
 
-- Ingen VG-ambition (inga titlar-som-påståenden, ingen diagramval-reflektion,
-  ingen Tufte-tillämpning).
 - Ingen ML, ingen prediktion, ingen interaktivitet.
 - Inga "imponerande" tillägg som inte tjänar analysen.
+- Inte full VG-checklist överallt — bara där det naturligt tillför värde.
 
 ## Arbetsregler för Claude
 
 - Följ KK1-readme när tveksamhet uppstår om kraven.
-- Föreslå inte VG-tillägg om jag inte ber om det.
-- Bare minimum är målet. Tid är knapp (deadline 20 maj 09:00).
-- En sektion i taget. Vänta på godkännande innan nästa.
-- Användaren gör alla git-commits själv.
+- En sektion i taget. Vänta på godkännande innan nästa sektion.
+- **Auto-commit på branch `i3-pga-tour`:** Claude commit:ar löpande efter varje litet
+  steg, med svenska imperativa meddelanden. Många små commits, inte stora klumpar.
+- Inom en sektion commit:as flera små steg sekventiellt. Mellan sektionerna stannar
+  Claude och väntar på godkännande.
+- Frågan bestämmer diagramtypen — börja alltid med "vad ska betraktaren kunna jämföra?".
