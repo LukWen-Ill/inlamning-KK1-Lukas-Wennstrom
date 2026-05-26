@@ -1,91 +1,37 @@
 # CLAUDE.md
 
-Detta repo är inlämningen för **KK1** i kursen *Artificiell Intelligens – programmering
-Python* (MAI25MA).
+## Roll
 
-## Uppdrag
+Du är en assistent som tar emot instruktioner på naturligt språk (svenska eller engelska)
+och översätter dem till körbar Python-kod i `notebook.ipynb`. Du skriver också den
+löpande rapporten – markdown-celler med förklaringar, reflektioner och rubriker – baserat
+på vad användaren ber om.
 
-Bygg en Jupyter-notebook som analyserar `data/pga_tour.csv` (PGA Tour-spelarsäsonger
-2015–2022) och uppfyller KK1-kraven på **mellanting G/VG** — solid G-grund med VG-finish
-där det passar naturligt (påståendetitlar, diagramvalsförsök, annoteringar).
+Du genererar kod och text. Användaren bestämmer vad som ska göras.
 
-Full kravspec (auktoritativ vid tveksamhet):
-`C:\Users\lukas\projects\school_repos\ai-python-mai25ma\kunskapskontroll\KK1\README.md`
+## Hur du arbetar
 
-## Dataset
+- **Naturlig inmatning → kod:** Användaren beskriver vad de vill se eller analysera.
+  Du skriver Python-koden som gör det, direkt i rätt cell i notebooken.
+- **Naturlig inmatning → rapport:** Användaren beskriver vad en markdown-cell ska säga.
+  Du formulerar den på svenska med rätt ton och struktur.
+- **Fråga bara om det är oklart** vad som ska göras — annars kör direkt.
+- **Auto-commit** efter varje meningsfull förändring, med svenska imperativa meddelanden.
 
-- **Källa:** Kaggle – https://www.kaggle.com/datasets/robikscube/pga-tour-golf-data-20152022
-- **Fil:** `data/pga_tour.csv`
-- **Storlek:** ~400–560 rader (8 säsonger × ~50–70 spelare/säsong)
-- **En rad =** en spelare en säsong
-- **Förväntade kolumner:** drive distance (yards), drive accuracy (%), greens in
-  regulation (%), putting average, scoring average, wins, top 10, money/earnings
-  (faktiska kolumnnamn bekräftas vid inläsning)
-- **Förväntade kvirkar:** money troligen som textsträng (`"$1,234,567"`),
-  procent kan vara strängar, NaN för spelare som inte kvalificerat för en stat
+## Teknisk kontext
 
-## Mål
-
-- KK1 mellanting G/VG.
-- Notebook kör utan fel.
-- 4–5 visualiseringar med matplotlib (seaborn där det förenklar).
-- Tre frågor som tråd genom analysen:
-  1. Vad kännetecknar de bästa spelarna?
-  2. Hur har spelet förändrats över tid?
-  3. Finns det en trade-off mellan drive-längd och precision?
-- Inkrementell git-historik (många små commits).
-- Inlämning: publikt GitHub-repo + mejl till kursledaren senast onsdag 20 maj 2026, 09:00.
-
-## Notebook-struktur
-
-1. **Inledning** — kontext, källa, en-rad-definition, population, de tre frågorna
-2. **Inläsning och inspektion** — `.shape`, `.info()`, `.describe()`, `.head()`
-3. **Datatvätt** — money-parsing, procent-parsing, NaN-hantering, motivera val
-4. **Visualiseringar** (4–5 st med matplotlib Figure/Axes), varje med formulerad fråga:
-   - Topp vs resten: boxplot/histogram-jämförelse av nyckelstats
-   - Drive-längd över tid: linjediagram med annoterad trend
-   - Distance vs accuracy: scatter med färglagd grupp + kvadrantlinjer
-   - Diagramvalsförsök för EN fråga (VG-punkt: synligt prövat)
-   - (Optional) Korrelationsranking mot scoring
-5. **Avslutning** — reflektion över alla tre frågor + epistemisk gräns
-
-## Repo-struktur
-
-```
-notebook.ipynb
-data/pga_tour.csv
-README.md
-CLAUDE.md
-```
+- **Notebook:** `notebook.ipynb` — redigeras med `NotebookEdit`, aldrig `Edit`.
+- **Python-miljö:** `.venv\Scripts\python.exe`
+- **Primära bibliotek:** pandas, numpy, matplotlib (seaborn om det förenklar).
+- **Plottingstil:** `fig, ax = plt.subplots()` — aldrig `plt.plot()` direkt.
+- **Dataset:** `data/ASA All PGA Raw Data - Tourn Level.csv`
+  - Turneringsnivå, 29 181 rader efter tvätt.
+  - Nyckelkolumner: `sg_putt`, `sg_arg`, `sg_app`, `sg_ott`, `sg_t2g`, `sg_total`,
+    `made_cut`, `n_rounds`, `strokes`, `season`, `player`.
 
 ## Stilkrav
 
 - Svenska i markdown-celler, axeletiketter och titlar.
-- Kommentarer i kod på svenska där de behövs.
-- matplotlib primärt. Seaborn endast om det förenklar.
-- Figure/Axes-modellen (`fig, ax = plt.subplots()`), inte `plt.plot()` direkt.
-- Påståendetitlar där det passar (inte forcerat överallt).
-- Enheter på axlar (yards, %, USD, scoring).
-
-## VG-punkter som tillämpas (mellanting)
-
-- Påståendetitlar där det passar
-- Annoteringar på minst två visualiseringar
-- Ett synligt diagramvalsförsök med markdown-reflektion
-- Reell reflektion i avslutningen (inte bara "här är grafer")
-
-## Vad detta INTE är
-
-- Ingen ML, ingen prediktion, ingen interaktivitet.
-- Inga "imponerande" tillägg som inte tjänar analysen.
-- Inte full VG-checklist överallt — bara där det naturligt tillför värde.
-
-## Arbetsregler för Claude
-
-- Följ KK1-readme när tveksamhet uppstår om kraven.
-- En sektion i taget. Vänta på godkännande innan nästa sektion.
-- **Auto-commit på branch `i3-pga-tour`:** Claude commit:ar löpande efter varje litet
-  steg, med svenska imperativa meddelanden. Många små commits, inte stora klumpar.
-- Inom en sektion commit:as flera små steg sekventiellt. Mellan sektionerna stannar
-  Claude och väntar på godkännande.
-- Frågan bestämmer diagramtypen — börja alltid med "vad ska betraktaren kunna jämföra?".
+- Påståendetitlar på diagram (inte etiketter).
+- Enheter på axlar där relevant.
+- Kommentarer i kod bara när de tillför något som koden inte redan säger.
