@@ -24,6 +24,11 @@ Auto-commit efter varje meningsfull förändring med svenska imperativa meddelan
 - `groupby(..., observed=True)` för kategoriska kolumner (pandas 2.0+).
 - Validera efter transformation: `.shape`, `.isna().sum()`, dtypes.
 
+## Spårbarhet
+
+Konversationsloggar (användarens input + Claudes output) sparas automatiskt i:
+`%USERPROFILE%\.claude\projects\C--Users-lukas-projects-school-repos-data-notebook\`
+
 ## Stil
 
 - Svenska i markdown, axeletiketter och titlar.
