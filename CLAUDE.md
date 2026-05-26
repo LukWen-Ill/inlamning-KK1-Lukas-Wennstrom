@@ -12,9 +12,9 @@ Auto-commit efter varje meningsfull förändring med svenska imperativa meddelan
 - **Python:** `.venv\Scripts\python.exe`
 - **Bibliotek:** pandas, numpy, matplotlib. Seaborn bara om det förenklar.
 - **Plot-modell:** `fig, ax = plt.subplots()` — aldrig `plt.plot()` direkt.
-- **Dataset:** `data/ASA All PGA Raw Data - Tourn Level.csv` — turneringsnivå, 29 181 rader.
-  Nyckelkolumner: `player`, `season`, `made_cut`, `n_rounds`, `strokes`,
-  `sg_putt`, `sg_arg`, `sg_app`, `sg_ott`, `sg_t2g`, `sg_total`.
+- **Dataset:** `data/pga-traditional/pgaTourData.csv` — spelare × säsong, 2 312 rader (2010–2018).
+  Nyckelkolumner: `Player Name`, `Year`, `Fairway Percentage`, `Avg Distance`,
+  `gir`, `Average Putts`, `Average Scrambling`, `Average Score`.
 
 ## Pandas (pandas-pro skill är aktiv)
 
