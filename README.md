@@ -32,6 +32,11 @@ Detta projekt använder **Claude Code** (Anthropic) som kodassistent. Arbetsflö
 2. Claude översätter instruktionen till Python-kod och skriver den direkt i notebooken.
 3. Jag granskar resultatet, justerar vid behov och godkänner varje steg.
 
+Utöver grundinstallationen använder jag ett community-skill, **pandas-pro**
+(https://github.com/jeffallan/claude-skills), som ger Claude förstärkta instruktioner
+för korrekt och effektiv pandas-kod – t.ex. vektoriserade operationer, rätt indexering
+och pandas 2.0-kompatibilitet.
+
 Analysfrågorna, tolkningarna och de skriftliga reflektionerna är mina. Claude skriver
 koden; jag styr vad koden ska göra och varför.
 
